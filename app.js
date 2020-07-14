@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const HTTP_PORT =process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -21,7 +20,8 @@ app.use((err, req, res, next) => {
     }
 })
 
-app.listen(3000, () => {
-    console.log('Listening on port ' +HTTP_PORT)
 
+app.set('port', (process.env.PORT || 3000));
+app.listen(app.get('port'), () => {
+    console.log('Node app is running on port', app.get('port'));
 })
