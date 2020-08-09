@@ -1,0 +1,111 @@
+@url=http://localhost:3000/api
+@json=Content-Type: application/json
+@authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMmYwMzE4M2ZiNjQ3MzM5NGZiZDAyMiIsImlhdCI6MTU5NjkzMTI1Nn0.xX6yw001V7gB3ZpWeJgcpKxPs6TOkOz6oivZvr7YEbU
+@user =5f2f614381f6ba02c04b07db
+###init data
+GET {{url}}/test/initdb_v1
+{{json}}
+
+###add course to user 
+GET {{url}}/test/addcourse
+{{json}}
+
+###remove course to user 
+GET {{url}}/test/removecourse
+{{json}}
+
+
+###add comment to user 
+GET {{url}}/test/addcomment
+{{json}}
+
+###remove comment to user 
+GET {{url}}/test/removecomment
+{{json}}
+
+###get users list
+get {{url}}/admin/users
+###get courses list
+get {{url}}/admin/courses
+
+###get comments list
+get {{url}}/admin/comments
+
+
+###get current user courses list
+get {{url}}/courses
+Authorization: {{authorization}}
+
+###get current user comments list
+get {{url}}/comments
+Authorization: {{authorization}}
+
+
+
+
+###Register
+post {{url}}/register
+{{json}}
+
+{
+    "username":"test",
+    "password":"test",
+    "email": "test@olearning.com",
+    "firstname":  "test",
+    "lastname": "test",
+    "usertype": "0"
+}
+###login
+post {{url}}/login
+{{json}}
+
+{
+    "email":"admin@oleae",
+    "password":"0000"
+}
+
+
+###get profile
+GET {{url}}/profile
+Authorization: {{authorization}}
+
+
+###get user by id
+GET {{url}}/admin/user/{{user}}
+
+###get course by id
+GET {{url}}/admin/course/5f2f03193fb6473394fbd026
+
+###get comments by courseid
+GET {{url}}/admin/course/5f2f03193fb6473394fbd026/comments
+
+
+###add a new comment
+post {{url}}/admin/comment
+{{json}}
+
+{
+    "userid":"5f2f80063573243e98e4dac2",
+    "content": "new comment test1111sssssttttttsqcqwc",
+    "courseid": "5f2f80073573243e98e4dac5"
+}
+
+###delete user 
+delete {{url}}/admin/user/5f300ce4c57f9d3e20cf4b12
+{{json}}
+
+
+###update user 
+###user3
+post {{url}}/admin/user
+{{json}}
+
+{
+    "userid":"5f300ce4c57f9d3e20cf4b12",
+    "firstname": "tttAAAAAAAAAAAAAAA",
+    "lastname": "tttAAAAUpdateUser2LastName",
+    "password": "123",
+    "email": "bbbAAA@update.com"
+}
+
+
